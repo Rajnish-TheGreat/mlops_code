@@ -8,7 +8,7 @@ img_cols = 224
 model = VGG16(weights = 'imagenet', 
                  include_top = False, 
                  input_shape = (img_rows, img_cols, 3))
-# Let's print our layers 
+# Let's Print our layers 
 for (i,layer) in enumerate(model.layers):
     print(str(i) + " "+ layer.__class__.__name__, layer.trainable)
 from keras.applications import VGG16
