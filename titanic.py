@@ -18,6 +18,7 @@ def lw(cols):
         return age
 dataset['Age'] = dataset[['Age', 'Pclass']].apply(lw , axis=1)
 dataset.drop('Cabin', axis=1, inplace=True )
+y = dataset['Survived']
 X = dataset[ ['Pclass','Sex', 'Age', 'SibSp', 'Parch' , 'Embarked' ]]
 sex = dataset['Sex']
 sex = pd.get_dummies(sex, drop_first=True )
