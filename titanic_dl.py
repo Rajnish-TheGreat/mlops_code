@@ -15,6 +15,7 @@ def lw(cols):
             return 30
     else:
         return age
+
 dataset['Age'] = dataset[['Age', 'Pclass']].apply(lw , axis=1)
 dataset.drop('Cabin', axis=1, inplace=True )
 
