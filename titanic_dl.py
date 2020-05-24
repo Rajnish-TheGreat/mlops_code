@@ -66,45 +66,37 @@ model.add(Dense(units=random.randint(8,64),
                 kernel_initializer='he_normal' ))
 model.add(Dense(units=2, activation='softmax'))
 
-model.compile(optimizer=RMSprop(learning_rate=0.01),  
+model.compile(optimizer=RMSprop(learning_rate=0.001),  
               loss='categorical_crossentropy',
               metrics=['accuracy']
              )
-accuracy = model.fit(X,y_cat, epochs=20)
+accuracy = model.fit(X,y_cat, epochs=15)
 accuracy.history['accuracy'][-1:][0]
 
 num = num + 1
 
+while num < 6 :
+    model  =  Sequential()
+    model.add(Dense(units=random.randint(8,256) , input_shape=(18,), 
+                activation='relu', 
+                kernel_initializer='he_normal' ))
+    model.add(Dense(units=32 , 
+                activation='relu', 
+                kernel_initializer='he_normal' ))
+    model.add(Dense(units=16, 
+                activation='relu', 
+                kernel_initializer='he_normal' ))
+    model.add(Dense(units=random.randint(8,64), 
+                activation='relu', 
+                kernel_initializer='he_normal' ))
+    model.add(Dense(units=2, activation='softmax'))
 
-if num > 6 :
-    print("Program Failed")
- 
-else :
-    if accuracy.history['accuracy'][-1:][0] > 0.8 :
-        model.save('titanic.h5')
-        
-    else :
-        model  =  Sequential()
-        model.add(Dense(units=random.randint(8,256) , input_shape=(18,), 
-                activation='relu', 
-                kernel_initializer='he_normal' ))
-        model.add(Dense(units=32 , 
-                activation='relu', 
-                kernel_initializer='he_normal' ))
-        model.add(Dense(units=16, 
-                activation='relu', 
-                kernel_initializer='he_normal' ))
-        model.add(Dense(units=random.randint(8,64), 
-                activation='relu', 
-                kernel_initializer='he_normal' ))
-        model.add(Dense(units=2, activation='softmax'))
-
-        model.compile(optimizer=RMSprop(learning_rate=0.01),  
+    model.compile(optimizer=RMSprop(learning_rate=0.01),  
               loss='categorical_crossentropy',
               metrics=['accuracy']
              )
-        accuracy = model.fit(X,y_cat, epochs=20)
-        accuracy.history['accuracy'][-1:][0] 
-        num = num + 1
-
-        
+    accuracy = model.fit(X,y_cat, epochs=20)
+    accuracy.history['accuracy'][-1:][0] 
+    num += 1
+    if accuracy.history['accuracy'][-1:][0] > 0.8 :
+        model.save('titanic.h5')
