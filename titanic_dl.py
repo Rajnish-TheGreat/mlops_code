@@ -83,7 +83,7 @@ layers()
 
 if num > 6 :
     print("Program Failed")
-    break
+ 
 else :
     if accuracy.history['accuracy'][-1:][0] > 0.8 :
         model.save('titanic.h5')
