@@ -87,7 +87,7 @@ if num > 6 :
 else :
     if accuracy.history['accuracy'][-1:][0] > 0.8 :
         model.save('titanic.h5')
-        break
+        
     else :
         layers()
-    
+        
