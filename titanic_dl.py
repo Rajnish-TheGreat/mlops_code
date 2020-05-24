@@ -74,6 +74,7 @@ def layers():
                  )
     accuracy = model.fit(X,y_cat, epochs=20)
     accuracy.history['accuracy'][-1:][0]
+    num=0
     num = num + 1
 
 
