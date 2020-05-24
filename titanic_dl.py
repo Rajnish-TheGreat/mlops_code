@@ -76,10 +76,6 @@ accuracy.history['accuracy'][-1:][0]
 num = num + 1
 
 
-layers()
-
-
-
 if num > 6 :
     print("Program Failed")
  
