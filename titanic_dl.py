@@ -68,4 +68,5 @@ model.compile(optimizer=RMSprop(learning_rate=0.01),
 
 accuracy = model.fit(X,y_cat, epochs=10)
 model.save('titanic.h5')
+
 accuracy.history['accuracy'][-1:][0]
