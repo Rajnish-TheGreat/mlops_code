@@ -54,7 +54,7 @@ from keras.optimizers import RMSprop
 def layers():
 
     model  =  Sequential()
-    model.add(Dense(units=random.radint(8,256) , input_shape=(18,), 
+    model.add(Dense(units=random.randint(8,256) , input_shape=(18,), 
                     activation='relu', 
                     kernel_initializer='he_normal' ))
     model.add(Dense(units=32 , 
@@ -63,7 +63,7 @@ def layers():
     model.add(Dense(units=16, 
                     activation='relu', 
                     kernel_initializer='he_normal' ))
-    model.add(Dense(units=random.radint(8,64), 
+    model.add(Dense(units=random.randint(8,64), 
                     activation='relu', 
                     kernel_initializer='he_normal' ))
     model.add(Dense(units=2, activation='softmax'))
