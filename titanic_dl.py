@@ -61,7 +61,10 @@ model.add(Dense(units=16,
                 kernel_initializer='he_normal' ))
 model.add(Dense(units=2, activation='softmax'))
 
+
 from keras.optimizers import RMSprop
+
+
 model.compile(optimizer=RMSprop(learning_rate=0.01),  
               loss='categorical_crossentropy',
              metrics=['accuracy']
