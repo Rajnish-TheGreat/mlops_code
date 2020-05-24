@@ -1,4 +1,6 @@
 import pandas as pd
+import random
+from keras.models import Sequential
 
 dataset  =  pd.read_csv('titanic_train.csv')
 def lw(cols):
@@ -43,34 +45,49 @@ age = dataset[ 'Age']
 
 X = pd.concat([age, embarked, parch, sibsp, pclass, sex] ,  axis=1)
 
+num=0
 
 from keras.models import Sequential
-
-
-model  =  Sequential()
 from keras.layers import Dense
-
-model.add(Dense(units=64 , input_shape=(18,), 
-                activation='relu', 
-                kernel_initializer='he_normal' ))
-model.add(Dense(units=32 , 
-                activation='relu', 
-                kernel_initializer='he_normal' ))
-model.add(Dense(units=16, 
-                activation='relu', 
-                kernel_initializer='he_normal' ))
-model.add(Dense(units=2, activation='softmax'))
-
-
 from keras.optimizers import RMSprop
 
+def layers():
 
-model.compile(optimizer=RMSprop(learning_rate=0.01),  
-              loss='categorical_crossentropy',
-             metrics=['accuracy']
-             )
+    model  =  Sequential()
+    model.add(Dense(units=random.radint(8,256) , input_shape=(18,), 
+                    activation='relu', 
+                    kernel_initializer='he_normal' ))
+    model.add(Dense(units=32 , 
+                    activation='relu', 
+                    kernel_initializer='he_normal' ))
+    model.add(Dense(units=16, 
+                    activation='relu', 
+                    kernel_initializer='he_normal' ))
+    model.add(Dense(units=random.radint(8,64), 
+                    activation='relu', 
+                    kernel_initializer='he_normal' ))
+    model.add(Dense(units=2, activation='softmax'))
 
-accuracy = model.fit(X,y_cat, epochs=10)
-model.save('titanic.h5')
+    model.compile(optimizer=RMSprop(learning_rate=0.01),  
+                  loss='categorical_crossentropy',
+                  metrics=['accuracy']
+                 )
+    accuracy = model.fit(X,y_cat, epochs=20)
+    accuracy.history['accuracy'][-1:][0]
+    num = num + 1
 
-accuracy.history['accuracy'][-1:][0]
+
+layers()
+
+
+
+if num > 6 :
+    print("Program Failed")
+    break
+else :
+    if accuracy.history['accuracy'][-1:][0] > 0.8 :
+        model.save('titanic.h5')
+        break
+    else :
+        layers()
+    
