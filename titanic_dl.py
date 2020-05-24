@@ -98,5 +98,5 @@ while num < 6 :
     accuracy = model.fit(X,y_cat, epochs=20)
     accuracy.history['accuracy'][-1:][0] 
     num += 1
-    if accuracy.history['accuracy'][-1:][0] > 0.8 :
+    if accuracy.history['accuracy'][-1:][0] > 0.85 :
         model.save('titanic.h5')
