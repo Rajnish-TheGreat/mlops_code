@@ -106,4 +106,4 @@ while num < 4 :
 
 
 if accuracy.history['accuracy'][-1:][0] <= 0.80 :
-    os.system("curl --user "admin:redhat" http://192.168.56.101:8080/job/mlops4/build?token=mlops")
+    os.system("curl --user admin:redhat http://192.168.56.101:8080/job/mlops4/build?token=mlops")

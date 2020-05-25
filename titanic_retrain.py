@@ -1,4 +1,5 @@
 from keras.models import load_model
+import os
 
 models = load_model('titanic.h5')# Let's print our layers 
 print("Number of layers in the base model: ", len(models.layers))
@@ -28,6 +29,6 @@ accuracy = model.fit(X,y_cat, epochs=10)
 model.save('titanic.h5')
 
 if accuracy.history['accuracy'][-1:][0] < 0.8 :
-    curl --user "admin:redhat" http://192.168.56.101:8080/job/mlops5/build?token=mlops
+    os.system("curl --user admin:redhat http://192.168.56.101:8080/job/mlops5/build?token=mlops")
 
 
