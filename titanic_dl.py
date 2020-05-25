@@ -1,5 +1,6 @@
 import pandas as pd
 import random
+import os
 from keras.models import Sequential
 
 dataset  =  pd.read_csv('titanic_train.csv')
@@ -76,7 +77,7 @@ accuracy.history['accuracy'][-1:][0]
 num = num + 1
 
 
-while num < 6 :
+while num < 4 :
     model  =  Sequential()
     model.add(Dense(units=random.randint(8,256) , input_shape=(18,), 
                 activation='relu', 
@@ -99,7 +100,10 @@ while num < 6 :
     accuracy = model.fit(X,y_cat, epochs=20)
     accuracy.history['accuracy'][-1:][0] 
     num += 1
+    model.save('titanic.h5')
     if accuracy.history['accuracy'][-1:][0] > 0.80 :
         model.save('titanic.h5')
 
 
+if accuracy.history['accuracy'][-1:][0] <= 0.80 :
+    os.system("curl --user "admin:redhat" http://192.168.56.101:8080/job/mlops4/build?token=mlops")
