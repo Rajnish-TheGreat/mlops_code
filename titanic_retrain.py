@@ -84,7 +84,7 @@ model.compile(optimizer=RMSprop(learning_rate=0.01),
 accuracy = model.fit(X,y_cat, epochs=10)
 model.save('titanic.h5')
 
-if accuracy.history['accuracy'][-1:][0] < 0.8 :
+if accuracy.history['accuracy'][-1:][0] < 0.80 :
     os.system("curl --user admin:redhat http://192.168.56.101:8080/job/mlops5/build?token=mlops")
 
 
