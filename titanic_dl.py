@@ -52,6 +52,8 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import RMSprop
 
+
+
 model  =  Sequential()
 model.add(Dense(units=random.randint(8,256) , input_shape=(18,), 
                 activation='relu', 
