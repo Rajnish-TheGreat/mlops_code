@@ -57,17 +57,17 @@ from keras.optimizers import RMSprop
 model  =  Sequential()
 model.add(Dense(units=random.randint(8,256) , input_shape=(18,), 
                 activation='relu', 
-                kernel_initializer='he_normal' ))
+                kernel_initializer='he_normal',name='Lay1' ))
 model.add(Dense(units=32 , 
                 activation='relu', 
-                kernel_initializer='he_normal' ))
+                kernel_initializer='he_normal',name='Lay2' ))
 model.add(Dense(units=16, 
                 activation='relu', 
-                kernel_initializer='he_normal' ))
+                kernel_initializer='he_normal',name='Lay3' ))
 model.add(Dense(units=random.randint(8,64), 
                 activation='relu', 
-                kernel_initializer='he_normal' ))
-model.add(Dense(units=2, activation='softmax'))
+                kernel_initializer='he_normal',name='Lay4' ))
+model.add(Dense(units=2, activation='softmax',name='Lay5'))
 
 model.compile(optimizer=RMSprop(learning_rate=0.001),  
               loss='categorical_crossentropy',
